@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Math Practice</title>
+	</head>
+
+	<body onload="showAll()">
+		<button onclick="startPractice()">Start Math Practice</button>
+		<button onclick="submitAns()">submit answer</button>
+		<button onclick="showAll()">View Math Practice History</button>
+		<span>Enter a name to search</span>
+		<input type="text" id="search" value="" />
+		<button onclick="searchInfo()">search</button>
+		<div id="display"></div>
+
+		<script type="text/javascript">
+			function storageSupported() {
+				if(window.localStorage || typeof(Storage) !== "undefined") {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			var joseph = {};
+			var leesure = {};
+
+			function startPractice() {
+
+				var student = window.prompt("please enter your name", "")
+				var html = "";
+				var flag = null
+				if(student == "joseph") {
+					flag = student;
+					joseph.name = student;
+					joseph.time = new Date();
+					html += "Hi, " + student + "<br/>";
+					questions = []
+					for(var i = 0; i < 5; i++) {
+						var a = Math.floor(Math.random() * 10);
+						var b = Math.floor(Math.random() * 10);;
+						html += a + "+" + b + "= <input type='text' class = 'result'> <input type='button' value='Check Answer' id='q" + i + "' onclick='checkAnswer (event," + a + "," + b + "," + student + ")'><br/>"
+						questions.push(a + "+" + b + "=0,error")
+					}
+					joseph.questions = questions;
+					document.getElementById("display").innerHTML = html;
+					console.log(joseph)
+					localStorage.setItem(joseph.name, JSON.stringify(joseph));
+				} else if(student == "leesure") {
+					flag = student;
+					leesure.name = student;
+					leesure.time = new Date();
+					html += "Hi, " + student + "<br/>";
+					questions = []
+					for(var i = 0; i < 5; i++) {
+						var a = Math.floor(Math.random() * 10);
+						var b = Math.floor(Math.random() * 10);;
+						html += a + "+" + b + "= <input type='text' class = 'result'> <input type='button' value='Check Answer' id='q" + i + "' onclick='checkAnswer (event," + a + "," + b + "," + student + ")'><br/>"
+						questions.push(a + "+" + b + "=0,error")
+					}
+					leesure.questions = questions;
+					document.getElementById("display").innerHTML = html;
+					localStorage.setItem(leesure.name, JSON.stringify(leesure));
+				}
+
+			}
+
+			function checkAnswer(event, a, b, student) {
+				var c = parseInt(a) + parseInt(b);
+				switch(event.target.id) {
+					case "q0":
+						verify(student, 0, a, b, c);
+						break;
+					case "q1":
+						verify(student, 1, a, b, c);
+						break;
+					case "q2":
+						verify(student, 2, a, b, c);
+						break;
+					case "q3":
+						verify(student, 3, a, b, c);
+						break;
+					case "q4":
+						verify(student, 4, a, b, c);
+						break;
+					default:
+						break;
+				}
+
+			}
+
+			function verify(studentObj, i, a, b, c) {
+				var result = document.getElementsByClassName("result")[i].value;
+				if(c == result) {
+					console.log(result)
+					studentObj.questions[i] = a + "+" + b + "=" + result + ",right";
+					console.log(studentObj)
+					localStorage.removeItem(studentObj.name)
+					localStorage.setItem(studentObj.name, JSON.stringify(studentObj));
+				} else {
+					console.log(result)
+					studentObj.questions[i] = a + "+" + b + "=" + result + ",error";
+					console.log(studentObj)
+					localStorage.removeItem(studentObj.name)
+					localStorage.setItem(studentObj.name, JSON.stringify(studentObj));
+				}
+			}
+
+			function submitAns() {
+				alert("you have submited your answer");
+				document.getElementById("display").innerHTML = "";
+			}
+
+			function showAll() {
+				var html = ""
+				for(var i = 0; i < localStorage.length; i++) {
+					html += "<span>" + localStorage.key(i) + ": </span><ul>";
+					for(var j = 0; j < JSON.parse(localStorage.getItem(localStorage.key(i))).questions.length; j++) {
+						html += "<li>" + JSON.parse(localStorage.getItem(localStorage.key(i))).questions[j] + "</li>";
+					}
+					html += "</ul><span>"+JSON.parse(localStorage.getItem(localStorage.key(i))).time+"</span><br/><br/>"
+				}
+				document.getElementById("display").innerHTML = html;
+			}
+			
+			function searchInfo () {
+				var name=document.getElementById("search").value;
+				if (name==""){
+					return
+				}
+				if(JSON.parse(localStorage.getItem(name))){
+					var html = "";
+					html += "<span>" + name + ": </span><ul>";
+					for(var j = 0; j < JSON.parse(localStorage.getItem(name)).questions.length; j++) {
+							html += "<li>" + JSON.parse(localStorage.getItem(name)).questions[j] + "</li>";
+					}
+					html += "</ul><span>"+JSON.parse(localStorage.getItem(name)).time+"</span><br/><br/>"
+					document.getElementById("display").innerHTML = html;
+				}else{
+					document.getElementById("display").innerHTML="";
+				}
+				
+			}
+		</script>
+	</body>
+
+</html>

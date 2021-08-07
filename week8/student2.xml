@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 如果在xsd中不加xmlns 默认的命名空间则下面必须写xmlns -->
+<student  xmlns="http://www.leesure.com"
+        xmlns:lee="http://www.w3.org/2001/XMLSchema-instance"
+            lee:schemaLocation="http://www.leesure.com student2.xsd">
+    <firstName>lee</firstName>
+    <lastName>sure</lastName>
+    <email>arm125@qq.com</email>
+    <mobile>13525232332</mobile>
+</student>

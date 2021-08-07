@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>week12-lecture</title>
+	</head>
+
+	<body>
+		<canvas id="mycvs" width="1000" height="500" style="border: 1px solid black;"></canvas>
+		<br /><br />
+		<button onclick="drawTextHello()">start</button>
+		<button onclick="stokeDemo1()">Stroke Demo1</button>
+		<button onclick="drawUOW()">UOW</button>
+		<button onclick="clearCanvas()">clear canvas</button>
+		<script type="text/javascript">
+			function drawTextHello() {
+				// get the canvas's 2d context
+				var canvas = document.getElementById("mycvs");
+				var context = canvas.getContext("2d");
+				// fillText
+				context.font = "italic  small-caps bold 50px Arial";
+				context.fillText("Hello World", 150, 200)
+				// strokeText
+				context.font = "oblique 100px Courier New";
+				context.strokeText("Hello World", 300, 400);
+			}
+
+			function stokeDemo1() {
+				// get the canvas's 2d context
+				var canvas = document.getElementById("mycvs");
+				var context = canvas.getContext("2d");
+				// specify the path
+				context.beginPath();
+				context.moveTo(50, 10);
+				context.lineTo(50, 400);
+				context.lineTo(250, 400);
+				context.closePath();
+				// make the stroke along the path
+				context.strokeStyle = "aqua";
+				context.lineWidth = "8";
+				context.stroke();
+				context.fillStyle = "blue";
+				context.fill();
+			}
+
+			function drawUOW() {
+				// get the canvas's 2d context
+				var canvas = document.getElementById("mycvs");
+				var context = canvas.getContext("2d");
+				// letter U
+				context.beginPath();
+				context.moveTo(0, 0);
+				context.lineTo(0, 350);
+				context.lineTo(50, 400);
+				context.lineTo(250, 400);
+				context.lineTo(300, 350);
+				context.lineTo(300, 0);
+				context.lineTo(200, 0);
+				context.lineTo(200, 280);
+				context.lineTo(180, 300);
+				context.lineTo(120, 300);
+				context.lineTo(100, 280);
+				context.lineTo(100, 0);
+				context.closePath();
+				
+				context.fillStyle = "black";
+				context.fill();
+				context.strokeStyle = "blue";
+				context.lineWidth = "4";
+				context.stroke()
+				// letter O (outer)
+				// letter O (inner)
+				// letter W
+			}
+
+			function clearCanvas() {
+				// get the canvas's 2d context
+				var canvas = document.getElementById("mycvs");
+				var context = canvas.getContext("2d");
+				// clear the canvas
+				context.clearRect(0, 0, canvas.width, canvas.height)
+			}
+		</script>
+	</body>
+
+</html>

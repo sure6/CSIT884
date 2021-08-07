@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventCapture</title>
+</head>
+
+<body>
+    <div id="divOne" onclick="alert('我是最外层');">
+        <div id="divTwo" onclick="alert('我是中间层！')">
+            <a id="hr_three" href="http://www.baidu.com" mce_href="http://www.baidu.com" onclick="alert('我是最里层！');event.stopPropagation();">点击我</a>
+            <!-- <button id="hr_three" onclick="alert('我是最里层');event.stopPropagation();">点击我</button> -->
+        </div>
+    </div>
+    <script>
+        // window.onload=function(){
+            var three = document.getElementById("hr_three")
+        //     three.onclick=function(){
+        //         event.stopPropagation();
+        //     }
+        // // }
+    </script>
+</body>
+
+</html>

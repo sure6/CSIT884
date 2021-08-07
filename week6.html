@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-dynamic&animation</title>
+</head>
+
+<body>
+    <p>Q1</p>
+    <hr>
+    <h3>Please select 4 subjects.</h3>
+    <span>Subject 1:</span><input type="text" name="" id="sub1" value="MATH111"><br>
+    <span>Subject 2:</span><input type="text" name="" id="sub2" value="CS102"><br>
+    <span>Subject 3:</span><input type="text" name="" id="sub3" value="PHY133"><br>
+    <span>Subject 4:</span><input type="text" name="" id="sub4" value="CHEM101"><br>
+
+    <input type="button" value="Show selection" onclick="display()"><br>
+    <span id="display"></span>
+    <script>
+        function display() {
+            var sub1 = document.getElementById("sub1").value;
+            var sub2 = document.getElementById("sub2").value;
+            var sub3 = document.getElementById("sub3").value;
+            var sub4 = document.getElementById("sub4").value;
+            var display = document.getElementById("display");
+            display.innerHTML = "You have selected " + sub1 + ", " + sub2 + ", " + sub3 + " and " + sub4;
+        }
+    </script>
+
+    <p>Q2</p>
+    <hr>
+    <input type="text" id="num1">
+    <select name="" id="select">
+        <option value="add">+</option>
+        <option value="sub">-</option>
+        <option value="multi">x</option>
+    </select>
+    <input type="text" id="num2">
+    <span>=</span>
+    <input type="text" id="result">
+    <input type="button" value="Check" onclick="check1()">
+    <span id="display1"></span>
+    <script>
+        function check1() {
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            var result = document.getElementById("result").value;
+            var select = document.getElementById("select").value
+            var display1 = document.getElementById("display1");
+            console.log(select)
+
+            if (num1 == "" || num2 == "" || result == "") {
+                alert("you cannot input a non-number");
+                return;
+            }
+            switch (select) {
+                case "add":
+                    if ((Number(num1) + Number(num2)) == Number(result)) {
+                        display1.innerHTML = "Correct!"
+                    } else {
+                        display1.innerHTML = "Incorrect, please try again"
+                    }
+                    break;
+                case "sub":
+                    if ((Number(num1) - Number(num2)) == Number(result)) {
+                        display1.innerHTML = "Correct!"
+                    } else {
+                        display1.innerHTML = "Incorrect, please try again"
+                    }
+                    break;
+                case "multi":
+                    if ((Number(num1) * Number(num2)) == Number(result)) {
+                        display1.innerHTML = "Correct!"
+                    } else {
+                        display1.innerHTML = "Incorrect, please try again"
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    </script>
+
+    <p>Q3</p>
+    <hr>
+    <input type="button" value="Increase counter" onclick="add1()">
+    <p id="increment">0</p>
+    <script>
+        var increment = document.getElementById("increment")
+        function add1(){
+            increment.innerHTML= ++increment.innerHTML;
+        }
+    </script>
+
+    <p>Q4</p>
+    <hr>
+    <input type="button" value="Start counter animation" onclick="incre()">
+    <input type="button" value="Stop counter animation" onclick="clearTimer()">
+ <!--    <button onclick="incre()">Start counter animation</button>   
+    <button onclick="clearTimer()">Stop counter animation</button>  -->
+    <p id="displynum">0</p>
+    <script>
+        var displynum = document.getElementById("displynum")
+         var timer;
+        function incre(){
+            displynum.innerHTML= 0
+            clearInterval(timer)
+            timer= setInterval(add1,1000);
+        }
+       /*  function clear() { // js中有自带的clear()方法
+            alert("dasd")
+        } */
+        function clearTimer() {
+            clearInterval(timer) 
+        }
+        function add1(){
+            displynum.innerHTML= ++displynum.innerHTML;
+        }
+        
+           
+    </script>
+</body>
+
+</html>

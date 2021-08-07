@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>week-droganddrag</title>
+	</head>
+
+	<body>
+		<span id="hello" draggable="true" onDragStart="dragStart(event)">hello</span>
+		<span id="hi" draggable="true" onDragStart="dragStart(event)">hi</span>
+		<span id="bonjour" draggable="true" onDragStart="dragStart(event)">bonjour</span>
+		<span id="salut" draggable="true" onDragStart="dragStart(event)">salut</span><br /><br />
+		<span id="web" onDrop="drop(event)" onDragOver="dragOver(event)">web</span>
+		<span id="maze" onDrop="drop(event)" onDragOver="dragOver(event)">maze</span>
+		<span id="earth" onDrop="drop(event)" onDragOver="dragOver(event)">earth</span>
+		<span id="world" onDrop="drop(event)" onDragOver="dragOver(event)">world</span><br /><br />
+		<span id="message"></span>
+		<script type="text/javascript">
+			function dragStart(event) {
+				// get the dragged element ID
+				var dragId = event.target.id;
+				console.log("dragId="+dragId);
+				// store the dragged element ID into the dataTransfer object
+				event.dataTransfer.setData("dragId", dragId);
+			}
+
+			function drop(event) {
+				var dropId = event.target.id;
+				console.log("dropId="+dropId);
+				var dragId = event.dataTransfer.getData("dragId");
+				console.log("dragID="+dragId);
+				var messageSpan = document.getElementById("message");
+				messageSpan.innerHTML = dragId + " " + dropId
+			}
+
+			function dragOver(event) {
+				event.preventDefault();
+			}
+		</script>
+	</body>
+
+</html>

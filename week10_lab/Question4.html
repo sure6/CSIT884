@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Question3</title>
+	</head>
+	<body>
+		<textarea id="txta" rows="10" cols="40"></textarea><br />
+		<input type="button" value="Read JSON" onclick="generateVal()" /><br />
+		<span>Subject code: </span><input type="text" id="code" /><br />
+		<span>Subject title: </span><input type="text" id="subt" /><br />
+		<span>Subject credit point: </span><input type="text" id="subcp" /><br />
+		<span>Core subject: </span><input type="checkbox" id="cors"/>
+		<script>
+			var txta = document.getElementById("txta");
+			var subjectObjStr = '{\n'+
+							 	'	"code": "MATH101",\n'+
+							 	'	"title": "Abstract Algebra",\n'+
+							 	'	"creditPoint": "4",\n'+
+							 	'	"core": "true"\n'+
+							 	'}'
+			txta.innerHTML=subjectObjStr
+			function generateVal(){
+				var code = document.getElementById("code");
+				var subt = document.getElementById("subt");
+				var subcp = document.getElementById("subcp");
+				var cors = document.getElementById("cors");
+//				console.log(txta.value)
+				subjectObjStr = txta.value
+				
+				var subjectObj=JSON.parse(subjectObjStr)
+				code.value=subjectObj.code;
+				subt.value=subjectObj.title;
+				subcp.value=subjectObj.creditPoint;
+				if (subjectObj.core == "true"){
+					cors.checked=true
+				}else{
+					cors.checked=false
+				}
+				
+			}
+		</script>
+	</body>
+</html>

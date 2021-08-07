@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>week13-question2</title>
+	</head>
+
+	<body onload="initApp();">
+		<span>Task: </span>
+		<input type="text" id="task" value="" />
+		<span>Urgency: </span>
+		<select id="urgency">
+			<option value="Low" selected="selected">Low</option>
+			<option value="Medium">Medium</option>
+			<option value="High">High</option>
+		</select>
+		<button onclick="addTask()">Add</button>
+		<button onclick="showTask()">Show Task</button>
+		<button onclick="clearTask()">clear storage</button>
+		<div id="taskDisplay"></div>
+		<script type="text/javascript">
+			function storageSupported() {
+				if(window.localStorage || typeof(Storage) !== "undefined") {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			var toDoList = [];
+
+			function initApp() {
+				if(storageSupported()) {
+					// get the to-do list JSON from local storage
+					var toDoListJSON = localStorage.getItem("toDoListJSON");
+					// parse the JSON to the toDoList
+					if(toDoListJSON != null) {
+						toDoList = JSON.parse(toDoListJSON);
+						showTask();
+					}
+				} else {
+					alert("Web Storage not supported");
+				}
+			}
+
+			function addTask() {
+				// get task description from user input
+				toDoObj = {};
+				var now = new Date();
+				toDoObj.time = now.getTime();
+				toDoObj.task = document.getElementById("task").value;
+				toDoObj.urgency = document.getElementById("urgency").value;
+
+				toDoList.push(toDoObj);
+
+				if(storageSupported()) {
+					localStorage.setItem("toDoListJSON", JSON.stringify(toDoList));
+					document.getElementById("task").value = "";
+				}
+			}
+
+			function showTask() {
+				var html = "";
+				for(var i = 0; i < toDoList.length; i++) {
+					var toDo = toDoList[i];
+					switch(toDo.urgency) {
+						case "Low":
+							html += "Task: <span style='color:green'>" + toDo.task + "</span>, Urgency: " + toDo.urgency;
+							break;
+						case "Medium":
+							html += "Task: <span style='color:orange'>" + toDo.task + "</span>, Urgency: " + toDo.urgency;
+							break;
+						case "High":
+							html += "Task: <span style='color:red'>" + toDo.task + "</span>, Urgency: " + toDo.urgency;
+							break;
+						default:
+							break;
+					}
+					html += "<img src='https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F01%2F35%2F32%2F17573bddebdf3c1.jpg&refer=http%3A%2F%2Fbpic.588ku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1625376812&t=448ab1af9d36a79f7bbb09b531d66c32'  width=15 style='cursor:pointer;' onClick='deleteTask(" + toDo.time + ")'//>"
+					html += "<br/><br/>"
+
+				}
+				document.getElementById("taskDisplay").innerHTML = html;
+
+			}
+
+			function clearTask() {
+				localStorage.clear();
+			}
+
+			function deleteTask(time) {
+				for(var i = 0; i < toDoList.length; i++) {
+					var toDo = toDoList[i];
+					
+					if(time === toDo.time) {
+						toDoList.splice(i, 1);
+						break;
+					}
+				}
+
+				if(storageSupported()) {
+					localStorage.setItem("toDoListJSON", JSON.stringify(toDoList));
+				}
+				showTask();
+			}
+		</script>
+	</body>
+
+</html>

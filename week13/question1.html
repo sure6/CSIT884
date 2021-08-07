@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>week13-question1</title>
+	</head>
+	<body>
+		<span>Enter JSON to validate: </span><br />
+		<textarea id="txtarea" rows="10" cols="40"></textarea><br />
+		<button onclick="verifyJSON()">Validate JSON</button>
+		<span id="resultInfo"></span>
+		<script>
+			JSONStr='{\n'+
+						'	"code": "MATH201",\n'+
+						'	"title": "Abstract Algebra",\n'+
+						'	"cp": 6\n'+
+						'}';
+			document.getElementById("txtarea").innerHTML=JSONStr;
+	
+			function verifyJSON(){
+				data = document.getElementById("txtarea").value;
+				if (typeof data == 'string') {
+				　　try {
+				　　　　var obj=JSON.parse(data);
+				　　　　if(typeof obj == 'object' && obj ){
+							document.getElementById("resultInfo").innerHTML="<span style='color: green;'> JSON is valid</span>";
+//				　　　　  　 alert("JSON is valid");
+				　　　　}else{
+							document.getElementById("resultInfo").innerHTML="<span style='color: red;'>Error: Unexpected token t in JSON at position 25</span>";
+//				　　　　　　alert("Error: Unexpected token t in JSON at position 25");
+				　　　　}
+				　　} catch(e) {
+						document.getElementById("resultInfo").innerHTML="<span style='color: red;'>Error: Unexpected token t in JSON at position 25</span>";
+//				　　　　alert("Error: Unexpected token t in JSON at position 25");
+				　　}
+				}		
+			}
+		</script>
+	</body>
+</html>

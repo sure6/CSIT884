@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="mycanvas" style="border: 1px solid black" width="200" height="200"></canvas>
+<br>
+<button onclick="drawRect()">Start</button>
+<script>
+    function drawRect(){
+        var canvas=document.getElementById("mycanvas")
+        var context=canvas.getContext("2d")
+        context.beginPath();
+        context.moveTo(30,30);
+        context.lineTo(30,100);
+        context.lineTo(100,100);
+        context.lineTo(100,30);
+        context.closePath()
+        context.strokeStyle="red";
+        context.fillStyle="blue"
+        context.fill()
+        context.stroke();
+
+    }
+</script>
+</body>
+</html>

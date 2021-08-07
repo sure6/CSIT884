@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button onclick="doStart()">start</button>
+<button onclick="doStop()">stop</button>
+<span id="display"></span>
+<script>
+  function doStart(){
+    var display=document.getElementById("display");
+    var num=Math.floor(Math.random()*100000);
+    var count=0;
+    var result=0;
+    timer=setInterval(function () {
+      result=Number(num)+Number(count);
+      display.innerHTML=num+"+"+count+"="+result;
+      count+=100
+    },1000)
+  }
+  function doStop(){
+    clearInterval(timer)
+  }
+</script>
+</body>
+</html>

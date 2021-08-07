@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Question3</title>
+	</head>
+	<body>
+		<span>Subject code: </span><input type="text" value="MATH101" id="code" /><br />
+		<span>Subject title: </span><input type="text" value="Abstract Algebra" id="subt" /><br />
+		<span>Subject credit point: </span><input type="text" value="4" id="subcp" /><br />
+		<span>Core subject: </span><input type="checkbox"  id="cors"/><br />
+		<input type="button" value="view JSON" onclick="generateJSON()" /><br />
+		<textarea id="txta" rows="30" cols="50"></textarea>
+		<script>
+			function generateJSON(){
+				var code = document.getElementById("code");
+				var subt = document.getElementById("subt");
+				var subcp = document.getElementById("subcp");
+				var cors = document.getElementById("cors");
+				var txta = document.getElementById("txta");
+				if (cors.checked == true){
+					cors.value=true
+				}else{
+					cors.value=false
+				}
+				var subject={};
+				subject.code=code.value;
+				subject.title=subt.value;
+				subject.creditPoint=subcp.value;
+	
+				subject.core=cors.value;
+				console.log(subject)
+				var strObj=JSON.stringify(subject,null,2)
+				txta.innerHTML=strObj
+			}
+		</script>
+	</body>
+</html>

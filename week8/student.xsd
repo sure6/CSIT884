@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.leesure.com"
+            elementFormDefault="qualified">
+    <xsd:element name="student">
+        <xsd:complexType mixed="true">
+            <xsd:sequence>
+                <xsd:element name="firstName" type="xsd:string"/>
+                <xsd:element name="lastName" type="xsd:string"/>
+                <xsd:element name="email" type="xsd:string"/>
+                <xsd:element name="mobile" type="xsd:string" default="13111111222"/>
+                <xsd:element name="gender" type="xsd:string" fixed="male"/>
+                <xsd:element name="age" >
+                    <xsd:simpleType>
+                        <xsd:restriction base="xsd:integer">
+                            <xsd:maxInclusive value="0"/>
+                            <xsd:maxInclusive value="90"/>
+                        </xsd:restriction>
+                    </xsd:simpleType>
+                </xsd:element>
+                <xsd:element name="weight" >
+                    <xsd:complexType>
+                        <xsd:complexContent>
+                            <xsd:restriction base="xsd:string">
+                                <xsd:attribute name="lang" type="xsd:string"/>
+                            </xsd:restriction>
+                        </xsd:complexContent>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

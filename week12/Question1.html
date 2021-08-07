@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>week12-exercise-Q1</title>
+	</head>
+
+	<body>
+		<span id="p1">
+			Enter coordinate for 1st point: X=<input type="text" id="x1" value="120" /> Y=<input type="text"  id="y1" value="20" />
+		</span><br />
+		<span id="p2">
+			Enter coordinate for 2nd point: X=<input type="text" id="x2" value="30" /> Y=<input type="text"  id="y2" value="130" />
+		</span><br />
+		<span id="p3">
+			Enter coordinate for 3rd point: X=<input type="text" id="x3" value="250" /> Y=<input type="text"  id="y3" value="140" />
+		</span><br /><br />
+		<canvas id="mycanvas" width="1000" height="500" style="border: 1px dashed black;"></canvas><br /><br />
+		<button onclick="drawTriangle()">Draw triangle</button>
+		<script type="text/javascript">
+			function clearCanvas() {
+				// get the canvas's 2d context
+				var canvas = document.getElementById("mycanvas");
+				var context = canvas.getContext("2d");
+				// clear the canvas
+				context.clearRect(0, 0, canvas.width, canvas.height)
+			}
+			// 从最内层往外层画, 防止出现覆盖现象 Draw from the innermost layer to the outer layer to prevent overlay
+			function drawTriangle() {
+				// first clear , then draw
+				clearCanvas();
+
+				var x1 = document.getElementById("x1").value;
+				var y1 = document.getElementById("y1").value;
+				var x2 = document.getElementById("x2").value;
+				var y2 = document.getElementById("y2").value;
+				var x3 = document.getElementById("x3").value;
+				var y3 = document.getElementById("y3").value;
+				var ABx = (parseInt(x1) + parseInt(x2)) / 2;
+				var ABy = (parseInt(y1) + parseInt(y2)) / 2;
+				var ACx = (parseInt(x1) + parseInt(x3)) / 2;
+				var ACy = (parseInt(y1) + parseInt(y3)) / 2;
+				var BCx = (parseInt(x2) + parseInt(x3)) / 2;
+				var BCy = (parseInt(y2) + parseInt(y3)) / 2;
+				
+				
+				// get the canvas's 2d context
+				var canvas = document.getElementById("mycanvas");
+				var context = canvas.getContext("2d");
+				// render triangle and bg
+				context.beginPath();
+				context.moveTo(x1, y1);
+				context.lineTo(x2, y2);
+				context.lineTo(x3, y3);
+				context.strokeStyle="black";
+				context.closePath();
+				context.fillStyle = "hotpink";
+				context.fill();
+				context.stroke();
+				// render mid line of the triangle
+				context.beginPath();
+				context.moveTo(x3, y3);;
+				context.lineTo(ABx, ABy);
+				context.moveTo(x2, y2);
+				context.lineTo(ACx, ACy);
+				context.moveTo(x1, y1);
+				context.lineTo(BCx, BCy);
+				context.strokeStyle = "white";
+				context.closePath();
+				context.stroke();
+				// render postion of triangular vertex
+				context.font = "bold 16px Arial";
+				context.fillStyle = "black";
+				context.fillText("A", x1, y1);
+				context.fillText("B", x2, y2);
+				context.fillText("C", x3, y3);
+
+			}
+		</script>
+	</body>
+
+</html>

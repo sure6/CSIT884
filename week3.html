@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-basics</title>
+</head>
+
+<body>
+    <span>question 1</span> <br/><br/>
+    <button onclick=" console.log('Hi there!JavaScript is cool!');">Console Hi</button>
+    <button onclick=" alert('Hi there!JavaScript is cool!')">Alert Hi</button>
+    <hr/>
+    <span>question 2</span> <br/><br/>
+    <button onclick="addText('Lion')">Lion</button>
+    <button onclick="addText('Frog')">Frog</button>
+    <input type="text" id="animal">
+    <div id="images">
+    </div>
+    <p id="name1"></p>
+    <p id="lion">Number of lion clicks: 0</p>
+    <p id="frog">Number of frog clicks: 0</p>
+    <script>
+        var btn=document.getElementById("animal");
+        var imgs=document.getElementById("images");
+        var img = document.createElement("img");
+        var name =document.getElementById("name1");
+        var frog =document.getElementById("frog");
+        var lion =document.getElementById("lion");
+        img.setAttribute("width","300px");
+        img.setAttribute("class","pic");
+        img.setAttribute("onclick","events()")
+        var pic=document.getElementsByClassName("pic")[0];
+        counterLion=0
+        counterFrog=0
+        function addText(arg){
+            if(arg == "Lion"){
+                animal.value="The Lion Button is clicked"; 
+                removeChildNodes();
+                img.setAttribute("src","https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2777183705,3673349030&fm=26&gp=0.jpg");
+                img.setAttribute("alt","Lion");
+                imgs.append(img);
+                // if(pic != undefined){
+                    // pic.addEventListener("click",events())
+                // }
+            }else if(arg == "Frog"){
+                animal.value="The Frog Button is clicked";
+                removeChildNodes();
+                img.setAttribute("src","https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=525128693,1392970117&fm=26&gp=0.jpg");
+                img.setAttribute("alt","Frog");
+                imgs.append(img);
+                // if(pic != undefined){
+                    // pic.addEventListener("click",events())
+                // }
+            }
+        }
+
+        function removeChildNodes(){
+            var childs = imgs.childNodes;
+            childs.forEach(element => {
+                imgs.removeChild(element)
+                name1.innerHTML="";
+                // element.removeEventListener("click",events());
+            });
+        }
+
+        function events() {
+            // event.stopPropagation();
+            // console.log("asad");
+            // console.log(event.toElement.alt)
+            if(event.toElement.alt == "Lion"){
+                // console.log("dasdaaa")
+                name1.innerHTML="Roar";
+                name1.style.color="orange";
+                counterLion++;
+                lion.innerHTML="Number of lion clicks: "+counterLion;
+            }else if(event.toElement.alt == "Frog"){
+                name1.innerHTML="Ribbit";
+                name1.style.color="green";
+                counterFrog++;
+                frog.innerHTML="Number of frog clicks: "+counterFrog;
+            }
+        }
+    
+    </script>
+    <script src=""></script>
+</body>
+
+</html>

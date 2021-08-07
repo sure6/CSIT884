@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<lee:schema xmlns:lee="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.leesure.com"
+            elementFormDefault="qualified">
+    <lee:element name="student">
+        <lee:complexType>
+            <lee:sequence>
+                <lee:element name="firstName" type="lee:string"/>
+                <lee:element name="lastName" type="lee:string"/>
+                <lee:element name="email" type="lee:string"/>
+                <lee:element name="mobile" type="lee:string"/>
+            </lee:sequence>
+        </lee:complexType>
+    </lee:element>
+</lee:schema>

@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ces</title>
+</head>
+
+<body>
+    <div style="display: flex;">
+        <img id="aa" src="../img/1.jpg" width="200px" onmouseover="mouseover()">
+        <img id="bb" src="../img/2.jpg" width="200px" onmouseover="mouseover()">
+    </div>
+
+
+</body>
+<script>
+    var leftImage = document.getElementById("aa");
+    var rightImage = document.getElementById("bb");
+    var leftSrc= leftImage.src
+    var rightSrc= rightImage.src
+    var position = "l-r";
+    function mouseover() {
+        if (position == "l-r") {
+            position = "r-l";
+            leftImage.src = rightSrc;
+            rightImage.src = leftSrc;
+        } else {
+            position = "l-r";
+            leftImage.src = leftSrc;
+            rightImage.src = rightSrc;
+        }
+    }
+</script>
+
+
+</html>

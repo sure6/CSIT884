@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>week12-exercise-Q2</title>
+		<style type="text/css">
+			#cat,
+			#dog {
+				font-size: 94px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- must set id for every elements because dragId and dropId get value from element id -->
+		<div id="catContainer">
+			<span id="cat" ondrop="drop(event)" ondragover="dropOver(event)">
+			CAT
+			</span>
+		</div>
+		<br />
+		<br />
+		<div id="dogContainer">
+			<span id="dog" ondrop="drop(event)" ondragover="dropOver(event)">
+			DOG
+			</span>
+		</div>
+		<br />
+		<br />
+		<br />
+		<img id="imgcat" draggable="true" ondragstart="dragStart(event)" alt="cat" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgss0.baidu.com%2F94o3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F6a63f6246b600c339761c419104c510fd8f9a1c2.jpg&refer=http%3A%2F%2Fgss0.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624713913&t=54cdfe252fb51a467ab9cdcdb161125a" width="100px" />
+		<img id="imgdog" draggable="true" ondragstart="dragStart(event)" alt="dog" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201504%2F16%2F20150416H5507_ZCdLF.thumb.400_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624714159&t=7f9ad43cbc74ed8004a6abaf668c308b" width="100px" />
+		<script type="text/javascript">
+			function dragStart(event) {
+				var dragId = event.target.id;
+				console.log("dragId=" + dragId);
+				event.dataTransfer.setData("dragId", dragId);
+			}
+
+			function dropOver(event) {
+				event.preventDefault();
+			}
+
+			function drop(event) {
+				var dropId = event.target.id;
+				console.log("dropId=" + dropId);
+
+				var dragId = event.dataTransfer.getData("dragId");
+				console.log("dragID=" + dragId);
+
+				if(dropId == "cat" && dragId == "imgcat") {
+					generateImg("catContainer", "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fgss0.baidu.com%2F94o3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F6a63f6246b600c339761c419104c510fd8f9a1c2.jpg&refer=http%3A%2F%2Fgss0.baidu.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624713913&t=54cdfe252fb51a467ab9cdcdb161125a");
+				} else if(dropId == "dog" && dragId == "imgdog") {
+					generateImg("dogContainer", "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201504%2F16%2F20150416H5507_ZCdLF.thumb.400_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624714159&t=7f9ad43cbc74ed8004a6abaf668c308b");
+				}
+			}
+
+			function generateImg(element, url) {
+				var img = document.createElement("img");
+				img.setAttribute("src", url);
+				img.setAttribute("width", "100px");
+				console.log(img);
+				document.getElementById(element).appendChild(img);
+				// create white space between each image
+				var space = document.createElement("span")
+				space.innerHTML = "&nbsp;";
+				console.log(space);
+				document.getElementById(element).appendChild(space);
+
+			}
+		</script>
+	</body>
+
+</html>

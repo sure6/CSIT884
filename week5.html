@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+
+<body>
+    <h1>Whosville library book search</h1>
+    <div>
+        <form action="http://library.whosville/bsearch" method="GET">
+            <table>
+                <tr>
+                    <td>Author name:</td>
+                    <td> <input type="text" name="author" /></td>
+                </tr>
+                <tr>
+                    <td>Publication year:</td>
+                    <td><input type="text" name="year" /></td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: text-top;">Subject:</td>
+                    <td><input type="checkbox" name="sub" value="mth" />Mathematics<br />
+                        <input type="checkbox" name="sub" value="cs" />Computer Science<br />
+                        <input type="checkbox" name="sub" value="bio" />Biology<br />
+                        <input type="checkbox" name="sub" value="phy" />Physics<br />
+                        <input type="checkbox" name="sub" value="chem" />Chemistry<br />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Search" />
+                        <input type="reset" value="Clear" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <!-- https://www.ebay.com.au/sch/i.html?_from=R40&_trksid=p2499334.m570.l1313&_nkw=iphone&_sacat=15032 -->
+        <h1>Ebay Search</h1>
+        <div>
+            <form action="https://www.ebay.com.au/sch/i.html?" method="GET">
+                Keywords: <input type="text" name="_nkw"><br />
+                <input type="radio" name="_sacat" value="550">Art<br />
+                <input type="radio" name="_sacat" value="267">Book and Magazine<br />
+                <input type="radio" name="_sacat" value="11116">Coins<br />
+                <input type="radio" name="_sacat" value="11233">Music<br />
+                <input type="radio" name="_sacat" value="260">Stamps<br />
+                <input type="radio" name="_sacat" value="0">All categories<br/>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

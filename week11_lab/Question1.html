@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>week11-q1</title>
+	</head>
+	<body>
+		<button id="btn" onclick="defindAJAX('faculty.json')">Get Faculty Details</button>
+		<p></p>
+		<div id="container">
+			
+		</div>
+		<script src="defindAjax.js"></script>
+		<script>
+			function handlerReponse(jsonStr){
+				var jsonObj = JSON.parse(jsonStr)
+				console.log(jsonObj)
+				var html = "<span><b>name:</b> "+jsonObj.name +"</span><br/>"
+				html +="<span><b>abbreviation:</b> "+jsonObj.abbreviation +"</span><br/>"
+				html +="<span><b>email:</b> "+jsonObj.email +"</span><br/>"
+				html +="<span><b>web:</b> "+jsonObj.web +"</span><br/>"
+				document.getElementById("container").innerHTML=html
+			}
+		</script>
+	</body>
+</html>

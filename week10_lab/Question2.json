@@ -1,0 +1,27 @@
+{
+	"firstName": "Smith",
+	"lastName": "John",
+	"subjects": [
+		{
+			"subject": "MATH101",
+			"creditPoint": 4,
+			"mark": 85,
+			"grade": "A"
+		}, {
+			"subject": "ECON111",
+			"creditPoint": 5,
+			"mark": 70,
+			"grade": "B"
+		}, {
+			"subject": "CS100",
+			"creditPoint": 5,
+			"mark": 80,
+			"grade": "A"
+		}, {
+			"subject": "LAW121",
+			"creditPoint": 6,
+			"mark": 75,
+			"grade": "B"
+		}
+	]
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-event&advanced func</title>
+</head>
+
+<body onload="todayTime()">
+<!-- question 1-->
+    <p></p>
+    <script>
+        var p =document.getElementsByTagName("p")[0];
+        function todayTime(){
+           var text= document.createTextNode("Today is "+new Date().getDate()+"-"+(new Date().getMonth()+1)+"-"+new Date().getFullYear());
+            p.append(text)
+        }
+    </script>
+
+<!--    question 2-->
+    <div>Q2:</div>
+    <hr/>
+    <img src="img/1.jpg" alt="" width="200px" id="imgL" onmouseover="change()">
+    <img src="img/2.jpg" alt="" width="200px" id="imgR" onmouseover="change()">
+    <script>
+        var imgLeft = document.getElementById("imgL");
+        var imgRight = document.getElementById("imgR");
+        var leftImgURL = imgLeft.src;
+        var rightImgURL = imgRight.src;
+
+        function change() {
+            if (event.toElement.src == rightImgURL || event.toElement.src != rightImgURL && imgLeft.src == leftImgURL) {
+                imgRight.src = leftImgURL;
+                imgLeft.src = rightImgURL;
+            } else {
+                imgRight.src = rightImgURL;
+                imgLeft.src = leftImgURL;
+            }
+
+        }
+    </script>
+
+<!--    question 3-->
+    <div>Q3:</div>
+    <hr/>
+    Enter command: <input type="text" id="txt" onkeydown="start() "> 
+    <!-- <input type="button" value="execute" id="btn" /> -->
+    <div id="imgs_container"></div>
+    <script>
+        // display lion display frog
+        // var btn = document.getElementById("btn");
+        var txt = document.getElementById("txt");
+        var imgsContainer = document.getElementById("imgs_container");
+        // var body = document.getElementsByTagName("body")[0];
+        function start() {
+            // console.log(event.keyCode);
+            if (event.keyCode==13 && txt.value != null && txt.value != "" && txt.value != undefined) {
+                removeChildNodes();
+                appendImg(txt.value);
+            }
+        }
+
+        function appendImg(value) {
+            if (value == "display frog") {
+                var img = document.createElement("img");
+                img.setAttribute("src", "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=295694473,3295821727&fm=26&gp=0.jpg");
+                img.setAttribute("class","images");
+                img.setAttribute("width","200px");
+                imgsContainer.append(img);
+            } else if (value == "display lion") {
+                var img = document.createElement("img");
+                img.setAttribute("src", "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3573093458,4198989127&fm=26&gp=0.jpg");
+                img.setAttribute("class","images");
+                img.setAttribute("width","200px");
+                imgsContainer.append(img);
+            } else {
+                alert("​invalid command​");
+            }
+        }
+        
+        function removeChildNodes(){
+            var childs = imgsContainer.childNodes;
+            childs.forEach(element => {
+                imgsContainer.removeChild(element);
+            });
+        }
+    </script>
+
+<!--question 4-->
+    <div>Q4:</div>
+    <hr/>
+    <img src="img/3.png" alt="" onclick="begin()" id="Afrog">
+    <span id="box"></span>
+    <script>
+        var Afrog = document.getElementById("Afrog");
+        var box = document.getElementById("box");
+        function begin() {
+           if(box.childNodes.length > 9){
+                return;
+           }
+           var sp = document.createElement("span");
+           sp.innerHTML="&#x1F438;";
+           box.appendChild(sp);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event</title>
+</head>
+
+<body>
+    <p>当提交表单是，触发函数并弹出提示信息。</p>
+    <!-- onsubmit="return myFunction()"  只有return false 才能阻止表单跳转和刷新-->
+    <form action="https://www.baidu.com" onsubmit="return myFunction()"> a
+        输入名字: <input type="text" name="fname">
+        <input type="submit" value="提交">
+    </form>
+    <script>
+        function myFunction() {
+            alert("表单已提交");
+            try{
+                var a = b;
+            }catch(e){
+                return false
+            }
+            
+            console.log(a)
+            return false
+        }
+    </script>
+</body>
+
+</html>

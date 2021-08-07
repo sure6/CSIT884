@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<dailyUpdate campus="Woolloomooloo" date="14/04/2021">
+    <staff operation="update">
+        <staffNumber>0154728</staffNumber>
+        <firstName>John</firstName>
+        <lastName>Smith</lastName>
+    </staff>
+    <staff operation="add">
+        <staffNumber>5287523</staffNumber>
+        <firstName>Mary</firstName>
+        <lastName>Jane</lastName>
+    </staff>
+    <staff operation="modify">
+        <staffNumber>4526412</staffNumber>
+        <firstName>Mark</firstName>
+        <lastName>Freeman</lastName>
+    </staff>
+    <staff operation="delete">
+        <staffNumber>6254352</staffNumber>
+        <firstName>Cathrine</firstName>
+        <lastName>Lee</lastName>
+    </staff>
+    <staff operation="check">
+        <staffNumber>7343212</staffNumber>
+        <firstName>Phillip</firstName>
+        <lastName>Trump</lastName>
+    </staff>
+</dailyUpdate>
